@@ -39,6 +39,17 @@ def draw(win, paddles):
 
     pygame.display.update()
 
+def handle_paddle_movement(keys, left_paddle, right_paddle):
+    if keys[pygame.K_w]:
+        left_paddle.move(up=True)
+    if keys[pygame.K_s]:
+        left_paddle.move(up=False)
+
+    if keys[pygame.K_UP]:
+        right_paddle.move(up=True)
+    if keys[pygame.K_DOWN]:
+        right_paddle.move(up=False)
+
 def main():
     run = True 
     clock = pygame.time.Clock()
@@ -54,6 +65,9 @@ def main():
             if event.type == pygame.QUIT:
                 run = False
                 break
+
+        keys = pygame.key.get_pressed()
+        handle_paddle_movement(keys, left_paddle, right_paddle)
 
     pygame.quit()
 
