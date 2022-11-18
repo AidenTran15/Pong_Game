@@ -1,22 +1,22 @@
 import pygame
 pygame.init()
 
-WIDTH, HEIGHT = 800, 800
-WIN = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Pong Game")
+WIDTH, HEIGHT = 800, 800 #Dimension of the screen 
+WIN = pygame.display.set_mode((WIDTH, HEIGHT)) #Show the screen
+pygame.display.set_caption("Pong Game") #Title of the scren
 
 FPS  = 60
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 
-PADDLE_WIDTH, PADDLE_HEIGHT = 20, 100
+PADDLE_WIDTH, PADDLE_HEIGHT = 20, 100 #Dimension of the paddle
 BALL_RADIUS = 7 
 
-SCORE_FONT = pygame.font.SysFont("comicsans", 25)
+SCORE_FONT = pygame.font.SysFont("comicsans", 25) #Set the font of the words
 
 class Paddle:
     COLOR = WHITE
-    VEL = 4
+    VEL = 4 #Velocity of paddle
 
     def __init__(self, x, y, width, height):
         self.x = x
@@ -25,16 +25,16 @@ class Paddle:
         self.height = height
 
     def draw(self, win):
-        pygame.draw.rect(win, self.COLOR, (self.x, self.y, self.width, self.height ))
+        pygame.draw.rect(win, self.COLOR, (self.x, self.y, self.width, self.height)) #Render the paddle on the screen
 
-    def move(self, up=True):
+    def move(self, up=True): #Moving the paddle
         if up:
-            self.y -= self.VEL
+            self.y -= self.VEL #the cordination of y is decreasing when paddle moving up
         else:
-            self.y += self.VEL
+            self.y += self.VEL #the cordination of y is increasing when paddle moving down
 
 class Ball:
-    MAX_VEL = 10
+    MAX_VEL = 10 #Velocity of the ball
     COLOR = WHITE
 
     def __init__(self, x, y, radius):
