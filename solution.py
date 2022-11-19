@@ -41,7 +41,7 @@ class Ball:
         self.x = self.original_X = x
         self.y = self.original_Y = y
         self.radius = radius
-        self.x_vel = self.MAX_VEL
+        self.x_vel = self.MAX_VEL 
         self.y_vel = 0
 
     def draw(self, win):
@@ -55,7 +55,7 @@ class Ball:
         self.x = self.original_X
         self.y = self.original_Y
         self.y_vel = 0
-        self.x_vel *= -1 
+        self.x_vel *= -1 # reset the ball in the middle of the screen 
 
 
 def draw(win, paddles, ball, left_score, right_score):
@@ -117,30 +117,30 @@ def handle_paddle_movement(keys, left_paddle, right_paddle):
     if keys[pygame.K_UP] and right_paddle.y - right_paddle.VEL >= 0:
         right_paddle.move(up=True)
     if keys[pygame.K_DOWN] and right_paddle.y + right_paddle.VEL + right_paddle.height <= HEIGHT:
-        right_paddle.move(up=False)
+        right_paddle.move(up=False) #Set the keyboard to move the paddle
 
 def main():
     run = True 
     clock = pygame.time.Clock()
 
-    left_paddle = Paddle(10, HEIGHT//2 - PADDLE_HEIGHT//2, PADDLE_WIDTH, PADDLE_HEIGHT)
-    right_paddle = Paddle(WIDTH - 10 - PADDLE_WIDTH, HEIGHT//2 - PADDLE_HEIGHT//2, PADDLE_WIDTH, PADDLE_HEIGHT)
+    left_paddle = Paddle(10, HEIGHT//2 - PADDLE_HEIGHT//2, PADDLE_WIDTH, PADDLE_HEIGHT) #Display the left paddle
+    right_paddle = Paddle(WIDTH - 10 - PADDLE_WIDTH, HEIGHT//2 - PADDLE_HEIGHT//2, PADDLE_WIDTH, PADDLE_HEIGHT) #Display the right paddle
 
-    ball = Ball(WIDTH // 2, HEIGHT // 2, BALL_RADIUS)
+    ball = Ball(WIDTH // 2, HEIGHT // 2, BALL_RADIUS) #Display the ball in the middle
 
     left_score = 0
     right_score = 0
 
     while run:
         clock.tick(FPS)
-        draw(WIN, [left_paddle, right_paddle], ball, left_score, right_score )
+        draw(WIN, [left_paddle, right_paddle], ball, left_score, right_score) #Render the stuffs on the screen
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
                 break
 
-        keys = pygame.key.get_pressed()
+        keys = pygame.key.get_pressed()  
         handle_paddle_movement(keys, left_paddle, right_paddle)
 
         ball.move()
