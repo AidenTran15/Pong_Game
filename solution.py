@@ -34,7 +34,7 @@ class Paddle:
             self.y += self.VEL
 
 class Ball:
-    MAX_VEL = 10
+    MAX_VEL = 100
     COLOR = WHITE
 
     def __init__(self, x, y, radius):
@@ -155,6 +155,8 @@ def main():
 
 
     pygame.quit()
+
+    
 
 if __name__ == '__main__':
     main()
